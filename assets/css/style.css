@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'DM Sans', sans-serif;
+}
+
+nav{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
+    color: #D04F4F;
+    font-size: 21px;
+}
+.page-width {
+    width: 90%;
+    margin: auto;
+}
+.input-wrapper{
+    width: 100%;
+    position: relative;
+}
+input{
+    width: 100%;
+    height: 69px;
+    background-color: #E7E7E7;
+    border: none;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+input::placeholder{
+    color: rgb(170, 170, 170);
+}
+.filters{
+    margin-top: 30px;
+}
+.active-filters-wrapper{
+    margin-bottom: 10px;
+}
+
+.search-icon{
+    position: absolute;
+    right:2rem;
+    top: 25%;
+    font-size: 30px;
+    height: 100%;
+}
+
+.filters-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    width: 32%;
+    justify-content: space-between;
+}
+
+.filter-common{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    padding: 0 20px;
+    color: white;
+    width: 170px;
+    height: 69px;
+    cursor: pointer;
+    position: relative;
+}
+.ingredients{
+    background-color: #3282F7;
+}
+.ingredients-drawer{
+    position: absolute;
+    /* height: 300px;*/
+    padding: 10px;
+    width: 100%;
+    background-color: #3282F7;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: none;
+    border-radius: 5px;
+}
+.appareils{
+    background-color: #68D9A4; 
+}
+.ustensiles{
+    background-color: #ED6454;
+}
+.card-wrapper{
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.card{
+    margin-bottom: 50px;
+    width: 30%;
+    height: 364px;
+    background-color: #C7BEBE;
+    border-radius: 5px;
+    position: relative;
+}
+.card-bottom{
+    position: absolute;
+    height: 186px;
+    width: 100%;
+    top: 50%;
+    background-color: #E7E7E7;
+    padding: 20px;
+}
+.card-header{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+.card-header h2{
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.card-body{
+    margin-top: 20px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    font-size: 13px;
+}
+.card-body ul{
+    list-style: none;
+    width: 50%;
+}
+.card-body p {
+    overflow-y: auto;
+    width: 50%;
+    max-height: 100px;
+}
+.show {
+    display: block;
+}
