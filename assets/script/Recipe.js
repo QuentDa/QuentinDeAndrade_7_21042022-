@@ -3,11 +3,60 @@ export default class Recipe {
         this.id = id;
         this.name = name;
         this.servings = servings;
-        this.ingredients = ingredients;
+        this.ingredients = [];
+        ingredients.forEach(ingredient => {
+            ingredient.ingredient = ingredient.ingredient.toLowerCase()
+            this.ingredients.push(ingredient)
+        })
         this.time = time;
         this.description = description;
         this.appliance = appliance;
         this.ustensils = ustensils;
+    }
+
+    hasName(input) {
+        return this.name.toLowerCase().includes(input.toLowerCase())
+    }
+    hasDescription(input) {
+        return this.description.toLowerCase().includes(input.toLowerCase())
+    }
+    hasIngredients(input) {
+        return this.ingredients.includes(input.toLowerCase())
+    }
+
+    containsIngredients(ingredients) {
+        let result = 0
+        ingredients.forEach(tag => {
+            this.ingredients.forEach(ingredient => {
+                if (ingredient.ingredient.includes(tag.toLowerCase())) {
+                    result++
+                }
+            })
+        })
+
+        return result == ingredients.size
+    }
+    containsAppareils(appareils) {
+        let result = 0
+        appareils.forEach(tag => {
+                if (appareil.includes(tag.toLowerCase())) {
+                    result++
+                }
+        })
+
+        return result == appareils.size
+    }
+    containsUstensiles(ustensiles) {
+        let result = 0
+        ingredients.forEach(tag => {
+            this.ingredients.forEach(ingredient => {
+                if (ingredient.ingredient.includes(tag.toLowerCase())) {
+                    result++
+                }
+            })
+        })
+
+        return result == ingredients.size
     }
 
     getCardDom() {

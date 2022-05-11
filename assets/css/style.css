@@ -72,7 +72,7 @@ input::placeholder{
 .ingredients{
     background-color: #3282F7;
 }
-.ingredients-drawer{
+.ingredients-drawer, .appareils-drawer, .ustensiles-drawer{
     position: absolute;
     /* height: 300px;*/
     padding: 10px;
@@ -80,15 +80,47 @@ input::placeholder{
     background-color: #3282F7;
     top: 0;
     left: 0;
-    z-index: 1;
+    z-index: 3;
     display: none;
     border-radius: 5px;
+}
+#ingredients-filters li{
+    z-index: 2;
+    margin-bottom: 5px;
+}
+.active-filters {
+    list-style: none;
+    display: flex;
+}
+.ingredient-active-filter{
+    border-radius: 5px;
+    background-color: #3282F7;
+    color: white;
+    padding: 15px;
+    margin-right: 10px;
+}
+.appareil-active-filter{
+    border-radius: 5px;
+    background-color: #68D9A4;
+    color: white;
+    padding: 15px;
+    margin-right: 10px;
 }
 .appareils{
     background-color: #68D9A4; 
 }
+.appareils-drawer{
+    background-color: #68D9A4;
+}
 .ustensiles{
     background-color: #ED6454;
+}
+.ustensiles-drawer{
+    background-color: #ED6454;
+}
+.close{
+    padding-left: 15px;
+    cursor: pointer;
 }
 .card-wrapper{
     margin-top: 50px;
