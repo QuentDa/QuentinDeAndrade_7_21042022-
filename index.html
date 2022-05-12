@@ -22,6 +22,7 @@
             <input type="text" placeholder="Rechercher une recette" id="search">
             <i class="fa-solid fa-magnifying-glass search-icon"></i>
         </div>
+        <span class="error"></span>
 
         <div class="filters">
             <div class="active-filters-wrapper">
@@ -32,7 +33,12 @@
                 <div class="filter-common ingredients">
                     <p>Ingredients</p>
                     <i class="fa-solid fa-angle-down carret-down"></i>
-                    <div class="ingredients-drawer"><ul id="ingredients-filters"></ul></div>
+                    <div class="ingredients-drawer">
+                        <input type="text" name="ingredientSearch" id="ingredientSearch">
+                        <ul id="ingredients-filters">
+
+                        </ul>
+                    </div>
                 </div>
                 <div class="filter-common appareils">
                     <p>Appareils</p>
@@ -47,10 +53,7 @@
             </div>
         </div>
 
-        <div class="card-wrapper">
-
-
-        </div>
+        <div class="card-wrapper"></div>
     </div>
 
 

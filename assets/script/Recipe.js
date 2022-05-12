@@ -24,6 +24,7 @@ export default class Recipe {
         return this.ingredients.includes(input.toLowerCase())
     }
 
+    //on fait un foreach sur les TAGS
     containsIngredients(ingredients) {
         let result = 0
         ingredients.forEach(tag => {
@@ -39,7 +40,7 @@ export default class Recipe {
     containsAppareils(appareils) {
         let result = 0
         appareils.forEach(tag => {
-                if (appareil.includes(tag.toLowerCase())) {
+                if (this.appliance.toLowerCase().includes(tag.toLowerCase())) {
                     result++
                 }
         })
@@ -48,15 +49,15 @@ export default class Recipe {
     }
     containsUstensiles(ustensiles) {
         let result = 0
-        ingredients.forEach(tag => {
-            this.ingredients.forEach(ingredient => {
-                if (ingredient.ingredient.includes(tag.toLowerCase())) {
+        ustensiles.forEach(tag => {
+            this.ustensils.forEach(ustensile => {
+                if (ustensile.toLowerCase().includes(tag.toLowerCase())) {
                     result++
                 }
             })
         })
-
-        return result == ingredients.size
+        
+        return result == ustensiles.size
     }
 
     getCardDom() {

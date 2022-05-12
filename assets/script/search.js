@@ -42,7 +42,7 @@ export default class Search {
         }
 
         processedRecipes.forEach(recipe => {
-            if (recipe.containsIngredients(this.tagIngredients) ) {
+            if (recipe.containsIngredients(this.tagIngredients) && recipe.containsAppareils(this.tagAppareils) && recipe.containsUstensiles(this.tagUstensiles) ) {
                 this.DOM.innerHTML = this.DOM.innerHTML + recipe.getCardDom()
                 recipe.ingredients.forEach(ingredient => {
                     this.listedIngredients.add(ingredient.ingredient)
@@ -54,12 +54,19 @@ export default class Search {
             }
         })
 
+        if (this.DOM.textContent == ' ') {
+            document.querySelector('.error').innerHTML = 'Aucune recette'
+        }
+
         this.displayIngredients() //va chercher les ingredients dans listedIngredients et affiche dans le selecteur ul LI
         this.displayAppareils()
         this.displayUstensiles()
     }
 
-    displayIngredients() {     
+    //RECHERCHE DANS LES FILTRES
+    //IL FAUT comparer listedIngredients.SONNOM avec input.value
+    //Faire des tests avec des console log
+    displayIngredients() {
         this.listedIngredients.forEach(ingredient => {
             const activeFilter = document.querySelector('.active-filters')
             const elementActiveFilter = document.createElement('li')
@@ -114,7 +121,7 @@ export default class Search {
 
                 closeFilter.addEventListener('click', () => {
                     elementActiveFilter.remove()
-                    this.tagIngredients.delete(appareil)
+                    this.tagAppareils.delete(appareil)
 
                     this.process()
                 })
@@ -122,13 +129,43 @@ export default class Search {
         })
     }
     displayUstensiles() {
-        
+        this.listedUstensiles.forEach(ustensile => {
+            const activeFilter = document.querySelector('.active-filters')
+            const elementActiveFilter = document.createElement('li')
+            const closeFilter = document.createElement('span')
+            const elementLi = document.createElement('li')
+            document.getElementById('ustensiles-filters').appendChild(elementLi)
+            elementLi.innerHTML += ustensile
+
+            elementLi.addEventListener('click', () => {
+                activeFilter.appendChild(elementActiveFilter)
+                elementActiveFilter.classList.add('ustensile-active-filter')
+                elementActiveFilter.innerHTML += ustensile
+                elementActiveFilter.appendChild(closeFilter)
+                closeFilter.classList.add('close')
+                closeFilter.innerHTML += '<i class="fa-solid fa-x"></i>'
+                this.tagUstensiles.add(ustensile)
+
+                this.process()
+
+
+
+                closeFilter.addEventListener('click', () => {
+                    elementActiveFilter.remove()
+                    this.tagUstensiles.delete(ustensile)
+
+                    this.process()
+                })
+            })
+        })
     }
-    //FAIRE POUR USTENSILES ET APPAREILS
 
     clearDOM() {
         this.DOM.innerHTML = ' '
         document.getElementById('ingredients-filters').innerHTML = ' '
+        document.getElementById('appareils-filters').innerHTML = ' '
+        document.getElementById('ustensiles-filters').innerHTML = ' '
+        document.querySelector('.error').innerHTML = ' '
         //la même chose pour APPAREILS ET USTENSILES
         //ustensiles A FAIRE
         //appareils A FAIRE

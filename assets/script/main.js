@@ -2,18 +2,33 @@ import Search from './Search.js'
 
 //Ouvrir les filtres///////////////////////////////////////////////////////
 const ingredientFilter = document.querySelector('.ingredients')
-ingredientFilter.addEventListener('click', () => {
-    document.querySelector('.ingredients-drawer').classList.toggle('show')
+window.addEventListener('click', function(e) {
+    if (ingredientFilter.contains(e.target)) {
+        document.querySelector('.ingredients-drawer').classList.add('show')
+    }
+    else {
+        document.querySelector('.ingredients-drawer').classList.remove('show')
+    }
 })
 
 const appareilsFilter = document.querySelector('.appareils')
-appareilsFilter.addEventListener('click', () => {
-    document.querySelector('.appareils-drawer').classList.toggle('show')
+window.addEventListener('click', function(e) {
+    if (appareilsFilter.contains(e.target)) {
+        document.querySelector('.appareils-drawer').classList.toggle('show')
+    }
+    else {
+        document.querySelector('.appareils-drawer').classList.remove('show')
+    }
 })
 
 const ustensilesFilters = document.querySelector('.ustensiles')
-ustensilesFilters.addEventListener('click', () => {
-    document.querySelector('.ustensiles-drawer').classList.toggle('show')
+window.addEventListener('click', function(e) {
+    if (ustensilesFilters.contains(e.target)) {
+        document.querySelector('.ustensiles-drawer').classList.toggle('show')
+    }
+    else {
+        document.querySelector('.ustensiles-drawer').classList.remove('show')
+    }
 })
 //////////////////////////////////////////////////////////////////////////
 
@@ -24,3 +39,5 @@ searchInputlabel.addEventListener('keyup', () => {
     search.searchInput = searchInputlabel.value
     search.process()
 })
+
+window.onload= search.process()
