@@ -58,101 +58,52 @@ export default class Search {
             document.querySelector('.error').innerHTML = 'Aucune recette'
         }
 
-        this.displayIngredients() //va chercher les ingredients dans listedIngredients et affiche dans le selecteur ul LI
-        this.displayAppareils()
-        this.displayUstensiles()
+        this.displayFilter(this.listedIngredients, 'ingredients')
+        this.displayFilter(this.listedAppareils, 'appareils')
+        this.displayFilter(this.listedUstensiles, 'ustensiles')
+
     }
 
     //RECHERCHE DANS LES FILTRES
     //IL FAUT comparer listedIngredients.SONNOM avec input.value
     //Faire des tests avec des console log
-    displayIngredients() {
-        this.listedIngredients.forEach(ingredient => {
+    displayFilter(filter, type) {
+        filter.forEach(filter => {
             const activeFilter = document.querySelector('.active-filters')
             const elementActiveFilter = document.createElement('li')
             const closeFilter = document.createElement('span')
             const elementLi = document.createElement('li')
-            document.getElementById('ingredients-filters').appendChild(elementLi)
-            elementLi.innerHTML += ingredient
+            document.getElementById(type+'-filters').appendChild(elementLi)
+            elementLi.innerHTML += filter
+            let tagContainer = null
+
+            switch(type) {
+                case 'ingredients':
+                    tagContainer = this.tagIngredients
+                    break;
+                case 'appareils':
+                    tagContainer = this.tagAppareils
+                    break;
+                case 'ustensiles':
+                    tagContainer = this.tagUstensiles
+                    break;
+            }
 
             elementLi.addEventListener('click', () => {
                 activeFilter.appendChild(elementActiveFilter)
-                elementActiveFilter.classList.add('ingredient-active-filter')
-                elementActiveFilter.innerHTML += ingredient
+                elementActiveFilter.classList.add(type+'-active-filter')
+                elementActiveFilter.innerHTML += filter
                 elementActiveFilter.appendChild(closeFilter)
                 closeFilter.classList.add('close')
                 closeFilter.innerHTML += '<i class="fa-solid fa-x"></i>'
-                this.tagIngredients.add(ingredient)
+                tagContainer.add(filter)         
+                
 
                 this.process()
 
-
-
                 closeFilter.addEventListener('click', () => {
                     elementActiveFilter.remove()
-                    this.tagIngredients.delete(ingredient)
-
-                    this.process()
-                })
-            })
-        })
-    }
-    displayAppareils() {
-        this.listedAppareils.forEach(appareil => {
-            const activeFilter = document.querySelector('.active-filters')
-            const elementActiveFilter = document.createElement('li')
-            const closeFilter = document.createElement('span')
-            const elementLi = document.createElement('li')
-            document.getElementById('appareils-filters').appendChild(elementLi)
-            elementLi.innerHTML += appareil
-
-            elementLi.addEventListener('click', () => {
-                activeFilter.appendChild(elementActiveFilter)
-                elementActiveFilter.classList.add('appareil-active-filter')
-                elementActiveFilter.innerHTML += appareil
-                elementActiveFilter.appendChild(closeFilter)
-                closeFilter.classList.add('close')
-                closeFilter.innerHTML += '<i class="fa-solid fa-x"></i>'
-                this.tagAppareils.add(appareil)
-
-                this.process()
-
-
-
-                closeFilter.addEventListener('click', () => {
-                    elementActiveFilter.remove()
-                    this.tagAppareils.delete(appareil)
-
-                    this.process()
-                })
-            })
-        })
-    }
-    displayUstensiles() {
-        this.listedUstensiles.forEach(ustensile => {
-            const activeFilter = document.querySelector('.active-filters')
-            const elementActiveFilter = document.createElement('li')
-            const closeFilter = document.createElement('span')
-            const elementLi = document.createElement('li')
-            document.getElementById('ustensiles-filters').appendChild(elementLi)
-            elementLi.innerHTML += ustensile
-
-            elementLi.addEventListener('click', () => {
-                activeFilter.appendChild(elementActiveFilter)
-                elementActiveFilter.classList.add('ustensile-active-filter')
-                elementActiveFilter.innerHTML += ustensile
-                elementActiveFilter.appendChild(closeFilter)
-                closeFilter.classList.add('close')
-                closeFilter.innerHTML += '<i class="fa-solid fa-x"></i>'
-                this.tagUstensiles.add(ustensile)
-
-                this.process()
-
-
-
-                closeFilter.addEventListener('click', () => {
-                    elementActiveFilter.remove()
-                    this.tagUstensiles.delete(ustensile)
+                    tagContainer.delete(filter)
 
                     this.process()
                 })

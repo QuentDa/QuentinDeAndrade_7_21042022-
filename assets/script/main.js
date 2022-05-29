@@ -40,4 +40,5 @@ searchInputlabel.addEventListener('keyup', () => {
     search.process()
 })
 
-window.onload= search.process()
+//load de toutes les recettes au chargement de la page
+search.process()
