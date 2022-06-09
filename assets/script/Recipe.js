@@ -73,7 +73,8 @@ export default class Recipe {
                     <ul>`
                         
         this.ingredients.forEach(ingredient => {
-            newCard += `<li> ${ingredient.ingredient} : ${'quantity' in ingredient ?ingredient.quantity : 'Tu peux y aller t\'inquiète'} ${'unit' in ingredient ? ingredient.unit : ' '} </li>`
+            newCard += `<li> ${ingredient.ingredient} : ${'quantity' in ingredient ?ingredient.quantity : 'Pas de valeur'} ${'unit' in ingredient ? ingredient.unit : ' '} </li>`
+            //au cas où aucune valeur n'est indiqué on affiche un message 
         });
                         
         newCard +=`</ul>

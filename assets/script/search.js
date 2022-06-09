@@ -4,9 +4,6 @@ import Recipe from './Recipe.js'
 export default class Search {
     constructor() {
         this.recipes = []
-        recipes.forEach(recipe => {
-            this.recipes.push(new Recipe(recipe.id, recipe.name, recipe.servings, recipe.ingredients, recipe.time, recipe.description, recipe.appliance, recipe.ustensils))
-        }) 
         //valeur de l'input
         this.searchInput = ''
         //ingrédients AFFICHÉS
@@ -17,7 +14,24 @@ export default class Search {
         this.tagIngredients = new Set()
         this.tagAppareils = new Set()
         this.tagUstensiles = new Set()
+        //attribution de TOUT les appareils/ustensiles/ingredients
+        this.allIngredients = new Set()
+        this.allAppareils = new Set()
+        this.allUstensiles = new Set()
+        //attribution du DOM
         this.DOM = document.querySelector('.card-wrapper')
+
+        recipes.forEach(recipe => {
+            this.allAppareils.add(recipe.appliance.toLowerCase())
+            recipe.ingredients.forEach(ingredient => {
+                this.allIngredients.add(ingredient.ingredient.toLowerCase())
+            })
+            recipe.ustensils.forEach(ustensil => {
+                this.allUstensiles.add(ustensil.toLowerCase())
+            })
+
+            this.recipes.push(new Recipe(recipe.id, recipe.name, recipe.servings, recipe.ingredients, recipe.time, recipe.description, recipe.appliance, recipe.ustensils))
+        }) 
     }
 
     process() {
@@ -67,6 +81,8 @@ export default class Search {
     //RECHERCHE DANS LES FILTRES
     //IL FAUT comparer listedIngredients.SONNOM avec input.value
     //Faire des tests avec des console log
+
+
     displayFilter(filter, type) {
         filter.forEach(filter => {
             const activeFilter = document.querySelector('.active-filters')

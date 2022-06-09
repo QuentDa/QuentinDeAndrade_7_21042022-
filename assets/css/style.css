@@ -1,4 +1,4 @@
-* {
+ * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -49,75 +49,32 @@ input::placeholder{
     font-size: 30px;
     height: 100%;
 }
-
-.filters-wrapper{
-    display: flex;
-    flex-wrap: wrap;
-    width: 32%;
-    justify-content: space-between;
-}
-
-.filter-common{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 5px;
-    padding: 0 20px;
-    color: white;
-    width: 170px;
-    height: 69px;
-    cursor: pointer;
-    position: relative;
-}
-.ingredients{
-    background-color: #3282F7;
-}
-.ingredients-drawer, .appareils-drawer, .ustensiles-drawer{
-    position: absolute;
-    /* height: 300px;*/
-    padding: 10px;
-    width: 100%;
-    background-color: #3282F7;
-    top: 0;
-    left: 0;
-    z-index: 3;
-    display: none;
-    border-radius: 5px;
-}
-#ingredients-filters li{
-    z-index: 2;
-    margin-bottom: 5px;
-}
 .active-filters {
     list-style: none;
     display: flex;
 }
-.ingredient-active-filter{
+.ingredients-active-filter{
     border-radius: 5px;
     background-color: #3282F7;
     color: white;
     padding: 15px;
     margin-right: 10px;
 }
-.appareil-active-filter{
+.appareils-active-filter{
     border-radius: 5px;
     background-color: #68D9A4;
     color: white;
     padding: 15px;
     margin-right: 10px;
 }
-.appareils{
-    background-color: #68D9A4; 
-}
-.appareils-drawer{
-    background-color: #68D9A4;
-}
-.ustensiles{
+.ustensiles-active-filter{
+    border-radius: 5px;
     background-color: #ED6454;
+    color: white;
+    padding: 15px;
+    margin-right: 10px;
 }
-.ustensiles-drawer{
-    background-color: #ED6454;
-}
+
 .close{
     padding-left: 15px;
     cursor: pointer;
@@ -129,8 +86,8 @@ input::placeholder{
     justify-content: space-between;
 }
 .card{
-    margin-bottom: 50px;
-    width: 30%;
+    margin-bottom: 100px;
+    width: 31.5%;
     height: 364px;
     background-color: #C7BEBE;
     border-radius: 5px;
@@ -138,11 +95,12 @@ input::placeholder{
 }
 .card-bottom{
     position: absolute;
-    height: 186px;
+    height: 200px;
     width: 100%;
     top: 50%;
     background-color: #E7E7E7;
     padding: 20px;
+    border-radius: 5px;
 }
 .card-header{
     display: flex;
@@ -164,13 +122,98 @@ input::placeholder{
 }
 .card-body ul{
     list-style: none;
-    width: 50%;
+    width: 45%;
 }
 .card-body p {
-    overflow-y: auto;
     width: 50%;
-    max-height: 100px;
+    max-height: 120px;
 }
+.card-body ul, .card-body p {
+    max-height: 100px;
+    overflow-y: auto;
+}
+
+
+
+.ingredients-drawer, .appareils-drawer, .ustensiles-drawer {
+    display: none;
+}
+@media screen and (min-width: 900px) {
+    .ingredients-drawer, .appareils-drawer, .ustensiles-drawer {
+        width: 500px;
+    }
+}
+@media screen and (max-width: 800px) {
+    .ingredients-drawer, .appareils-drawer, .ustensiles-drawer {
+        max-width: 300px;
+    }
+}
+.ingredients, .ingredients-drawer{
+    background-color: #3282F7;
+}
+.appareils, .appareils-drawer{
+    background-color: #68D9A4; 
+}
+.ustensiles, .ustensiles-drawer{
+    background-color: #ED6454;
+}
+.filters-wrapper{
+    width: 100%;
+    display: flex;
+}
+.filter-common{
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    color: white;
+    border-radius: 10px;
+    position: relative;
+    max-width: 500px;
+}
+.filter-common p{
+    margin-right: 10px;
+}
+
+.filter-common div{
+    z-index: 3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 10px;
+    padding: 10px;
+}
+.filter-common div ul {
+    list-style: none;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.filter-common div ul li {
+    width: 125px;
+}
+
 .show {
     display: block;
+}
+
+@media screen and (min-width: 900px) {
+    [data-drawer-Width="show3"] {
+        width: 500px;
+    }
+    [data-drawer-Width="show2"] {
+        width: 300px;
+    } 
+    [data-drawer-Width="show1"] {
+        width: 140px;
+    }
+    [data-button-Margin="margin3"] {
+        margin-right: 400px;
+    }
+    [data-button-Margin="margin2"] {
+        margin-right: 200px;
+    }
+    [data-button-Margin="margin1"] {
+        margin-right: 40px;
+    }
 }
