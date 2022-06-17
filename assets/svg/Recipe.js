@@ -4,10 +4,10 @@ export default class Recipe {
         this.name = name;
         this.servings = servings;
         this.ingredients = [];
-        ingredients.forEach(ingredient => {
+        for(const ingredient of ingredients) {
             ingredient.ingredient = ingredient.ingredient.toLowerCase()
             this.ingredients.push(ingredient)
-        })
+        }
         this.time = time;
         this.description = description;
         this.appliance = appliance;
