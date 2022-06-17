@@ -18,7 +18,7 @@ window.addEventListener('click', function(e) {
     }
     else {
         document.querySelector('.ingredients-drawer').classList.remove('show')
-        document.querySelector('.ingredients').style.marginRight = '0';
+        document.querySelector('.ingredients').dataset.buttonMargin = 'margin0'
     }
 })
 
@@ -26,9 +26,20 @@ const appareilsFilter = document.querySelector('.appareils')
 window.addEventListener('click', function(e) {
     if (appareilsFilter.contains(e.target)) {
         document.querySelector('.appareils-drawer').classList.add('show')
+
+        if (search.listedAppareils.size >= 3) {
+            document.querySelector('.appareils').dataset.buttonMargin = 'margin3'
+        }
+        else if (search.listedAppareils.size == 2) {
+            document.querySelector('.appareils').dataset.buttonMargin = 'margin2'
+        }
+        else {
+            document.querySelector('.appareils').dataset.buttonMargin = 'margin1'
+        }
     }
     else {
         document.querySelector('.appareils-drawer').classList.remove('show')
+        document.querySelector('.appareils').dataset.buttonMargin = 'margin0'
     }
 })
 
@@ -36,6 +47,7 @@ const ustensilesFilters = document.querySelector('.ustensiles')
 window.addEventListener('click', function(e) {
     if (ustensilesFilters.contains(e.target)) {
         document.querySelector('.ustensiles-drawer').classList.add('show')
+        
     }
     else {
         document.querySelector('.ustensiles-drawer').classList.remove('show')
@@ -111,6 +123,19 @@ appareilSearchInput.addEventListener('keyup', () => {
         }
     })
 
+    if (listedAppareils.size >= 3) {
+        document.querySelector('.appareils-drawer').dataset.drawerWidth = 'show3'
+        document.querySelector('.appareils').dataset.buttonMargin = 'margin3'
+    }
+    else if (listedAppareils.size == 2) {
+        document.querySelector('.appareils-drawer').dataset.drawerWidth = 'show2'
+        document.querySelector('.appareils').dataset.buttonMargin = 'margin2'
+    }
+    else {
+        document.querySelector('.appareils-drawer').dataset.drawerWidth = 'show1'
+        document.querySelector('.appareils').dataset.buttonMargin = 'margin1'
+    }
+
     search.listedAppareils = listedAppareils
 })
 
@@ -130,6 +155,19 @@ ustensileSearchInput.addEventListener('keyup', () => {
             elementLi.innerHTML = ustensile
         }
     })
+
+    if (listedUstensiles.size >= 3) {
+        document.querySelector('.ustensiles-drawer').dataset.drawerWidth = 'show3'
+        document.querySelector('.ustensiles').dataset.buttonMargin = 'margin3'
+    }
+    else if (listedUstensiles.size == 2) {
+        document.querySelector('.ustensiles-drawer').dataset.drawerWidth = 'show2'
+        document.querySelector('.ustensiles').dataset.buttonMargin = 'margin2'
+    }
+    else {
+        document.querySelector('.ustensiles-drawer').dataset.drawerWidth = 'show1'
+        document.querySelector('.ustensiles').dataset.buttonMargin = 'margin1'
+    }
 
     search.listedUstensiles = listedUstensiles
 })

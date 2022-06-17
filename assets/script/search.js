@@ -21,17 +21,19 @@ export default class Search {
         //attribution du DOM
         this.DOM = document.querySelector('.card-wrapper')
 
-        recipes.forEach(recipe => {
+        for(const recipe of recipes) {
             this.allAppareils.add(recipe.appliance.toLowerCase())
-            recipe.ingredients.forEach(ingredient => {
+            for(const ingredient of recipe.ingredients) {
                 this.allIngredients.add(ingredient.ingredient.toLowerCase())
-            })
-            recipe.ustensils.forEach(ustensil => {
+            }
+            for(const ustensil of recipe.ustensils) {
                 this.allUstensiles.add(ustensil.toLowerCase())
-            })
+            }
 
             this.recipes.push(new Recipe(recipe.id, recipe.name, recipe.servings, recipe.ingredients, recipe.time, recipe.description, recipe.appliance, recipe.ustensils))
-        }) 
+        }
+
+        
     }
 
     process() {
@@ -44,12 +46,14 @@ export default class Search {
 
         if (this.searchInput.length >= 3) {
             
-            this.recipes.forEach(recipe => {
+            for(const recipe of this.recipes) {
                 if (recipe.hasName(this.searchInput) || recipe.hasDescription(this.searchInput) || recipe.hasIngredients(this.searchInput)) {
                     //on push les recettes qui ont été traitées par le if dans processedRecipes
                     processedRecipes.push(recipe)
                 }
-            })
+            }
+
+            
         }
         else {
             processedRecipes = this.recipes
@@ -79,12 +83,9 @@ export default class Search {
     }
 
     //RECHERCHE DANS LES FILTRES
-    //IL FAUT comparer listedIngredients.SONNOM avec input.value
-    //Faire des tests avec des console log
-
-
-    displayFilter(filter, type) {
-        filter.forEach(filter => {
+    //affiche dans la liste ul li des filtres par rapport à l'input principal
+    displayFilter(filters, type) {
+        for(const filter of filters)  {
             const activeFilter = document.querySelector('.active-filters')
             const elementActiveFilter = document.createElement('li')
             const closeFilter = document.createElement('span')
@@ -124,7 +125,7 @@ export default class Search {
                     this.process()
                 })
             })
-        })
+        }
     }
 
     clearDOM() {
