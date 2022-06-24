@@ -68,6 +68,11 @@ export default class Search {
             }
         })
 
+        //prise en charge pour les filtres et la suppression de donnée dans l'input
+        this.allIngredients = this.listedIngredients
+        this.allUstensiles = this.listedUstensiles
+        this.allAppareils = this.listedAppareils
+
         if (this.DOM.textContent == ' ') {
             document.querySelector('.error').innerHTML = 'Aucune recette'
         }

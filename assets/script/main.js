@@ -79,12 +79,8 @@ ingredientSearchInput.addEventListener('keyup', () => {
     // console.log (listedIngredients)
     search.allIngredients.forEach(ingredient => {
         // console.log('je rentre dedans')
-        if (ingredient.includes(ingredientSearchInput.value)) {
-
-            const elementLi = document.createElement('li')
+        if (ingredient.includes(ingredientSearchInput.value)) {   
             listedIngredients.add(ingredient)
-            document.getElementById('ingredients-filters').appendChild(elementLi)
-            elementLi.innerHTML = ingredient
         }
     })
 
@@ -104,6 +100,7 @@ ingredientSearchInput.addEventListener('keyup', () => {
 
 
     search.listedIngredients = listedIngredients
+    search.displayFilter(search.listedIngredients, 'ingredients')   
 })
 
 //FILTRE APPAREILS
@@ -115,11 +112,7 @@ appareilSearchInput.addEventListener('keyup', () => {
 
     search.allAppareils.forEach(appareil => {
         if (appareil.includes(appareilSearchInput.value)) {
-
-            const elementLi = document.createElement('li')
             listedAppareils.add(appareil)
-            document.getElementById('appareils-filters').appendChild(elementLi)
-            elementLi.innerHTML = appareil
         }
     })
 
@@ -137,6 +130,7 @@ appareilSearchInput.addEventListener('keyup', () => {
     }
 
     search.listedAppareils = listedAppareils
+    search.displayFilter(search.listedAppareils, 'appareils')   
 })
 
 //FILTRE USTENSILES
@@ -148,11 +142,7 @@ ustensileSearchInput.addEventListener('keyup', () => {
 
     search.allUstensiles.forEach(ustensile => {
         if (ustensile.includes(ustensileSearchInput.value)) {
-
-            const elementLi = document.createElement('li')
             listedUstensiles.add(ustensile)
-            document.getElementById('ustensiles-filters').appendChild(elementLi)
-            elementLi.innerHTML = ustensile
         }
     })
 
@@ -170,4 +160,5 @@ ustensileSearchInput.addEventListener('keyup', () => {
     }
 
     search.listedUstensiles = listedUstensiles
+    search.displayFilter(search.listedUstensiles, 'ustensiles')   
 })
